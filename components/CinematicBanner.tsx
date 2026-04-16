@@ -19,6 +19,7 @@ export default function CinematicBanner() {
         muted
         loop
         playsInline
+        preload="none"
         style={{
           position: 'absolute',
           top: 0, left: 0,

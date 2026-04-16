@@ -53,7 +53,7 @@ export default function Hero() {
     >
       {/* z-index 0 — video background (desktop only) */}
       <video
-        autoPlay muted loop playsInline
+        autoPlay muted loop playsInline preload="none"
         className="hidden md:block"
         style={{
           position: 'absolute',
@@ -265,6 +265,7 @@ export default function Hero() {
         muted
         loop
         playsInline
+        preload="none"
         style={{
           position: 'absolute',
           top: 0, left: 0,
