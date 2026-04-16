@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 import { Lang, translations } from './translations';
 
 type LangContextType = {
@@ -17,7 +17,8 @@ const LangContext = createContext<LangContextType>({
 
 export function LangProvider({ children }: { children: React.ReactNode }) {
   const lang: Lang = 'en';
-  const setLang = (_: Lang) => {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const setLang = (_l: Lang) => {};
   const t = translations[lang];
 
   return (

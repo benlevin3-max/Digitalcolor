@@ -2,8 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useLang } from '@/lib/context';
-
 const bgColors = ['#FFFFFF', '#F5F5F7'];
 
 function IPhoneFrame({ src, alt, width = 240 }: { src: string; alt: string; width?: number }) {
@@ -44,9 +42,6 @@ function IPhoneFrame({ src, alt, width = 240 }: { src: string; alt: string; widt
 }
 
 export default function AppShowcaseSection() {
-  const { lang } = useLang();
-  const isRtl = lang === 'he';
-
   return (
     <section>
 
@@ -57,7 +52,7 @@ export default function AppShowcaseSection() {
             maxWidth: '1100px', margin: '0 auto',
             display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: '72px',
-            flexDirection: isRtl ? 'row-reverse' : 'row',
+            flexDirection: 'row',
           }}
           className="app-subsection"
         >
@@ -83,7 +78,7 @@ export default function AppShowcaseSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.12 }}
-            style={{ maxWidth: '400px', textAlign: isRtl ? 'right' : 'left' }}
+            style={{ maxWidth: '400px', textAlign: 'left' }}
           >
             <p style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '3px', color: '#0071E3', textTransform: 'uppercase', marginBottom: '16px' }}>
               E-SWATCHES
@@ -105,7 +100,7 @@ export default function AppShowcaseSection() {
             maxWidth: '1100px', margin: '0 auto',
             display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: '80px',
-            flexDirection: isRtl ? 'row-reverse' : 'row',
+            flexDirection: 'row',
           }}
           className="app-subsection"
         >
@@ -126,7 +121,7 @@ export default function AppShowcaseSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: 0.12 }}
-            style={{ maxWidth: '420px', textAlign: isRtl ? 'right' : 'left' }}
+            style={{ maxWidth: '420px', textAlign: 'left' }}
           >
             <p style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '3px', color: '#0071E3', textTransform: 'uppercase', marginBottom: '16px' }}>
               PRECISION MATCH
@@ -135,7 +130,7 @@ export default function AppShowcaseSection() {
               Tailored to every client.
             </h3>
             <p style={{ fontSize: '19px', fontWeight: 400, color: '#6E6E73', lineHeight: 1.6, marginBottom: '36px' }}>
-              Select the exact hair length and the client's current tone. The AI calculates the perfect formula — personalized, precise, and ready in seconds.
+              Select the exact hair length and the client&apos;s current tone. The AI calculates the perfect formula — personalized, precise, and ready in seconds.
             </p>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <a

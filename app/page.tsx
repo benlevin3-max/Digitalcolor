@@ -12,7 +12,6 @@ import MachineFeatures from '@/components/MachineFeatures';
 import AppShowcaseSection from '@/components/AppShowcaseSection';
 import Technology from '@/components/Technology';
 import CinematicBanner from '@/components/CinematicBanner';
-import VideoHero from '@/components/VideoHero';
 import GermanEngineering from '@/components/GermanEngineering';
 import Sustainability from '@/components/Sustainability';
 import Testimonials from '@/components/Testimonials';
