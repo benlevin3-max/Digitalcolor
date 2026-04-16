@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F7;
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --border: #D2D2D7;
+  --accent: #0071E3;
+  --accent-hover: #0077ED;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: #FFFFFF;
+  color: #1D1D1F;
+  font-family: -apple-system, "SF Pro Display", "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5F5F7; }
+::-webkit-scrollbar-thumb { background: #D2D2D7; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #AEAEB2; }
+
+/* Apple-style typography */
+.headline-xl {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.003em;
+  line-height: 1.05;
+  color: #1D1D1F;
+}
+
+.headline-lg {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.003em;
+  line-height: 1.07;
+  color: #1D1D1F;
+}
+
+.headline-md {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.002em;
+  line-height: 1.125;
+  color: #1D1D1F;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6E6E73;
+}
+
+.body-text {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #6E6E73;
+}
+
+/* Apple card */
+.apple-card {
+  background: #FFFFFF;
+  border: 1px solid #D2D2D7;
+  border-radius: 18px;
+}
+
+/* Apple nav */
+.apple-nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Apple buttons */
+.btn-apple-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0071E3;
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 12px 22px;
+  border-radius: 980px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-apple-primary:hover {
+  background: #0077ED;
+}
+
+.btn-apple-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #0071E3;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 12px 22px;
+  border-radius: 980px;
+  border: 1px solid #0071E3;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-apple-secondary:hover {
+  background: #0071E3;
+  color: #FFFFFF;
+}
+
+/* Section backgrounds */
+.section-white { background: #FFFFFF; }
+.section-gray { background: #F5F5F7; }
+
+/* Inputs */
+input, textarea, select {
+  background: #FFFFFF;
+  border: 1px solid #D2D2D7;
+  border-radius: 12px;
+  color: #1D1D1F;
+  font-family: inherit;
+  font-size: 17px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #0071E3;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+}
+
+input::placeholder, textarea::placeholder { color: #AEAEB2; }
+select option { background: #FFFFFF; color: #1D1D1F; }
+
+/* HR separator */
+.hr-apple {
+  height: 1px;
+  background: #D2D2D7;
+  border: none;
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Hide scrollbar while keeping scroll behaviour (used for tab rows) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Engine System Grid ── */
+.engine-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 1024px) {
+  .engine-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .engine-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Hero Banner Grid ── */
+.hero-banner-grid {
+  height: 600px;
+}
+.hero-banner-grid > * {
+  height: 600px;
+}
+
+@media (max-width: 767px) {
+  .hero-banner-grid {
+    height: auto !important;
+    flex-direction: column;
+  }
+  .hero-banner-grid > * {
+    flex: none !important;
+    width: 100% !important;
+    height: 500px !important;
+  }
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 767px) {
+  /* Prevent iOS zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+    min-height: 48px;
+  }
+
+  /* Touch targets */
+  .btn-apple-primary,
+  .btn-apple-secondary {
+    min-height: 44px;
+  }
+
+  /* Prevent any horizontal overflow */
+  section, footer {
+    overflow-x: hidden;
+  }
+}
