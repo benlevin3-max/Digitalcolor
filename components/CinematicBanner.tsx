@@ -27,7 +27,7 @@ export default function CinematicBanner() {
           zIndex: 0,
         }}
       >
-        <source src="https://pnsc72ixyytk3mqf.public.blob.vercel-storage.com/shutterstock_1093732031.mov" type="video/mp4" />
+        <source src="https://pnsc72ixyytk3mqf.public.blob.vercel-storage.com/shutterstock_1093732031.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
