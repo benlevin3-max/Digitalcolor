@@ -66,7 +66,7 @@ export default function Hero() {
           pointerEvents: 'none',
         }}
       >
-        <source src="/videos/art-bg.mp4" type="video/mp4" />
+        <source src="https://pnsc72ixyytk3mqf.public.blob.vercel-storage.com/shutterstock_33868708.mp4" type="video/mp4" />
       </video>
 
       {/* z-index 1 — white overlay above video */}
@@ -274,7 +274,7 @@ export default function Hero() {
           zIndex: 0,
         }}
       >
-        <source src="https://pnsc72ixyytk3mqf.public.blob.vercel-storage.com/shutterstock_33868708.MP4" type="video/mp4" />
+        <source src="https://pnsc72ixyytk3mqf.public.blob.vercel-storage.com/shutterstock_33868708.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
