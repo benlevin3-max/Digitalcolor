@@ -9,6 +9,7 @@ export default function Contact() {
   const { t } = useLang();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     firstName: '', lastName: '', email: '', phone: '',
     salon: '', country: '', license: '', message: '',
@@ -17,9 +18,20 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise(r => setTimeout(r, 1200));
-    setSubmitting(false);
-    setSubmitted(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('Failed to send');
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -156,6 +168,9 @@ export default function Contact() {
                   ) : t.contact.form.submit}
                 </button>
 
+                {error && (
+                  <p className="text-[13px] text-red-500 text-center">{error}</p>
+                )}
                 <p className="text-[13px] text-[#AEAEB2] text-center">
                   For professional use only. All applications are reviewed by our team.
                 </p>
