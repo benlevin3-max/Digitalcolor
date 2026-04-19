@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     };
 
     await resend.emails.send({
-      from: 'Digital Color USA <onboarding@resend.dev>',
+      from: 'Digital Color USA <noreply@digitalcolorberlin.com>',
       to: 'benlevin@digitalcolorberlin.com',
       replyTo: email,
       subject: `New Demo Request — ${firstName} ${lastName} (${salon})`,
