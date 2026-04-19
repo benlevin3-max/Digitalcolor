@@ -88,12 +88,48 @@ export default function Hero() {
           alignItems: 'center',
         }}
       >
-        <div className="w-full max-w-[980px] mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 items-center">
+        <div className="w-full max-w-[980px] mx-auto px-4 lg:px-6 flex flex-col lg:flex-row gap-8 items-center pt-20 lg:pt-0">
 
-          {/* LEFT — text */}
+          {/* TOP (mobile) / RIGHT (desktop) — machine image */}
+          <motion.div
+            style={{ y: machineY }}
+            className="flex items-end justify-center w-full lg:w-auto order-first"
+          >
+            <motion.div
+              initial={{ opacity: 0, x: 0, scale: 0.96 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{ position: 'relative', width: '100%', maxWidth: 320, aspectRatio: '1 / 1.05' }}
+              className="lg:max-w-[480px]"
+            >
+              <AnimatePresence>
+                {prevImage && (
+                  <motion.div key={prevImage} style={{ position: 'absolute', inset: 0 }}
+                    initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+                    <Image src={prevImage} alt="" fill
+                      className="object-contain object-bottom drop-shadow-2xl"
+                      sizes="(max-width: 1024px) 320px, 460px" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <motion.div key={activeVariant.image} style={{ position: 'absolute', inset: 0 }}
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
+                <Image
+                  src={activeVariant.image}
+                  alt={activeVariant.label}
+                  fill
+                  className="object-contain object-bottom drop-shadow-2xl"
+                  sizes="(max-width: 1024px) 320px, 460px"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* BOTTOM (mobile) / LEFT (desktop) — text */}
           <motion.div
             style={{ y: contentY, opacity: contentOp }}
-            className="flex flex-col items-center md:items-start text-center md:text-left pt-16 md:pt-0"
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
           >
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -108,7 +144,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="headline-xl mb-5 text-center md:text-left"
+              className="headline-xl mb-5 text-center lg:text-left"
             >
               Engineered<br />in Germany.<br />
               <span style={{ color: '#0071E3' }}>Powered by AI.</span>
@@ -128,7 +164,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.42 }}
-              className="inline-flex flex-wrap items-center justify-center md:justify-start gap-3 border border-[#D2D2D7] rounded-full px-5 py-2.5 mb-8"
+              className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-3 border border-[#D2D2D7] rounded-full px-5 py-2.5 mb-8"
               style={{ background: 'rgba(245,245,247,0.90)' }}
             >
               {['19+ Patents', '1,000+ Shades', '0.1ml Precision'].map((item, i) => (
@@ -144,7 +180,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.52 }}
-              className="flex flex-col sm:flex-row items-center gap-3 mb-8 w-full md:w-auto"
+              className="flex flex-col sm:flex-row items-center gap-3 mb-8 w-full lg:w-auto"
             >
               <a href="#contact" className="btn-apple-primary w-full sm:w-auto text-center">{t.hero.cta1}</a>
             </motion.div>
@@ -154,7 +190,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="flex items-center justify-center md:justify-start gap-4"
+              className="flex items-center justify-center lg:justify-start gap-4"
             >
               <div className="flex items-center gap-2.5">
                 {variants.map((v) => (
@@ -188,41 +224,6 @@ export default function Hero() {
                   {activeVariant.label}
                 </motion.span>
               </AnimatePresence>
-            </motion.div>
-          </motion.div>
-
-          {/* RIGHT — machine image */}
-          <motion.div
-            style={{ y: machineY }}
-            className="hidden md:flex items-end justify-center h-full"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.96 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-              style={{ position: 'relative', width: '100%', maxWidth: 480, aspectRatio: '1 / 1.05', opacity: 1 }}
-            >
-              <AnimatePresence>
-                {prevImage && (
-                  <motion.div key={prevImage} style={{ position: 'absolute', inset: 0 }}
-                    initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-                    <Image src={prevImage} alt="" fill
-                      className="object-contain object-bottom drop-shadow-2xl"
-                      sizes="460px" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <motion.div key={activeVariant.image} style={{ position: 'absolute', inset: 0 }}
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
-                <Image
-                  src={activeVariant.image}
-                  alt={activeVariant.label}
-                  fill
-                  className="object-contain object-bottom drop-shadow-2xl"
-                  sizes="460px"
-                  priority
-                />
-              </motion.div>
             </motion.div>
           </motion.div>
 
